@@ -196,9 +196,11 @@ public  class EmpresaAmazing implements IEmpresa  {
 	private double sumarPedidosCerrados() {
 		double suma = 0.0;
 		for(Pedido p: pedidos.values()) {
+			
 				suma += p.darValorTotal(); // .darValorTotal() verifica que si el pedido cerrado y, en caso de ser true, suma todos sus paquetes
+			
 		}
-		return suma;
+			return suma;
 	}
 	LinkedList<Transporte> lisValores(){
 		LinkedList <Transporte> transpo = new LinkedList <>();

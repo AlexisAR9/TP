@@ -15,14 +15,14 @@ public class Especial extends Paquete {
 		int volumen = super.mostrarVolumen() ;
 		int precio = super.mostrarPrecio();
 		 
-		if(volumen >= 3000 && volumen < 5000) {
-			return  precio + (precio * (this.porcentaje / 100)) + this.costoAdicional;
+		if(volumen >= 3000 ) {
+			return  precio + ((precio * this.porcentaje) / 100) + this.costoAdicional;
 			
 		}
 		if(volumen > 5000) {
-			return precio + (precio * (this.porcentaje / 100) ) +  this.costoAdicional * 2;
+			return precio + ((precio * this.porcentaje) / 100) +  this.costoAdicional * 2;
 		}
-		return precio + (precio * (this.porcentaje / 100));
+		return precio + ((precio * this.porcentaje) / 100);
 		
 	}
 	

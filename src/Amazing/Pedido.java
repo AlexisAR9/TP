@@ -55,9 +55,11 @@ public class Pedido {
 	}
 	
 	public double darValorTotal() {
-		double valor = 0.0;
-		for(Paquete paq: carrito.values()) {
+		double valor = 0;
+		if(this.estado) {
+			for(Paquete paq: carrito.values()) {
 				valor += paq.sumarCosto();
+			}
 		}
 		return valor;
 	}
