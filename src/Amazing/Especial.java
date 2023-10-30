@@ -9,12 +9,7 @@ public class Especial extends Paquete {
 		this.porcentaje = porcentaje;
 		this.costoAdicional = adicional;
 	}
-	int mostrarPocentaje() {
-		return this.porcentaje;
-	}
-	int mostrarCostoAdicional() {
-		return this.costoAdicional;
-	}
+	
 	@Override
 	public double sumarCosto() {
 		int volumen = super.mostrarVolumen() ;

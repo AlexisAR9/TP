@@ -15,6 +15,8 @@ public  class EmpresaAmazing implements IEmpresa  {
 	private String cuit;
 	private int numPedidos;
 	private int numPaquete;
+	
+	//----------------------------------------- Metodos principales -----------------------------------------
 	EmpresaAmazing(String cuit){
 		if(cuit.length() != 0) {
 			this.cuit = cuit;
@@ -81,11 +83,11 @@ public  class EmpresaAmazing implements IEmpresa  {
 		
 	public double cerrarPedido(int codPedido) {
 		Pedido pedido = darPedido(codPedido);
-		if(!verificarPedido(codPedido) ) {
-			throw new RuntimeException ("Pedido no registrado");
+		if(verificarPedido(codPedido) ) {
+			pedido.cerrarPedido();
+			return pedido.darValorTotal();
 		}
-		pedido.cerrarPedido();
-		return pedido.darValorTotal();
+		throw new RuntimeException ("Pedido no registrado");
 	}
 	public String cargarTransporte(String patente) {
 		Transporte transpo = darTransporte(patente);
@@ -129,14 +131,10 @@ public  class EmpresaAmazing implements IEmpresa  {
 					hayAlgunTransporteIgualAOtro |= sonIguales(t,t1);
 				}
 			}
-			
 		}
-		
 		return hayAlgunTransporteIgualAOtro;
 	}
 	
-
-
 	//--------------------------------Metodos de verificacion------------------------------------
 	
 	private boolean sonIguales(Transporte t, Transporte t1) {
@@ -176,9 +174,7 @@ public  class EmpresaAmazing implements IEmpresa  {
 		}
 		return pertenece;
 	}
-	private boolean transporteDelMismoTipo(Transporte t, Transporte t1) {
-		/*return (t instanceof Camion && t1 instanceof Camion || t instanceof Utilitario 
-		&& t1 instanceof Utilitario && t instanceof Automovil && t1 instanceof Automovil);*/ 
+	private boolean transporteDelMismoTipo(Transporte t, Transporte t1) { 
 		return t.getClass() == t1.getClass();
 	}
 
@@ -200,10 +196,7 @@ public  class EmpresaAmazing implements IEmpresa  {
 	private double sumarPedidosCerrados() {
 		double suma = 0.0;
 		for(Pedido p: pedidos.values()) {
-			if(p.mostrarEstado()) {
-				suma += p.darValorTotal(); //el .darValorTotal() verifica que se de el total con pedidos cerrados
-		
-			}
+				suma += p.darValorTotal(); // .darValorTotal() verifica que si el pedido cerrado y, en caso de ser true, suma todos sus paquetes
 		}
 		return suma;
 	}

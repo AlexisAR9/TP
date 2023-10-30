@@ -11,6 +11,7 @@ public class Utilitario extends Transporte {
 		super(patente, volumen, valorViaje);
 		this.valorExtra = valorExtra;
 	}
+	
 	@Override
 	public double sumarCostoEntrega() {
 		if(super.cantPaquetesEnCarga() > 0) {
@@ -21,6 +22,7 @@ public class Utilitario extends Transporte {
 		}
 		throw new RuntimeException ("Transporte sin cargar");
 	}
+	
 	@Override
 	public String cargarPaquete(int codPedido, LinkedList<Paquete> noEntregados, String direccion) {
 		StringBuilder string = new StringBuilder();

@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-
-
 public class Pedido {
 	private int codPedido;
 	private HashMap<Integer, Paquete> carrito;
@@ -52,12 +50,14 @@ public class Pedido {
 		return cliente.mostrarDireccion();
 	}
 	
+	public boolean mostrarEstado() {
+		return this.estado;
+	}
+	
 	public double darValorTotal() {
 		double valor = 0.0;
-		
 		for(Paquete paq: carrito.values()) {
 				valor += paq.sumarCosto();
-			
 		}
 		return valor;
 	}
@@ -70,10 +70,6 @@ public class Pedido {
 		throw new RuntimeException ("El pedido ha sido cerrado anteriormente ");
 	}
 	
-	public boolean mostrarEstado() {
-		return this.estado;
-	}
-	
 	public LinkedList <Paquete> darPaquetesNoEntregados(){
 		LinkedList<Paquete> noEntregados = new LinkedList<>();
 		if(this.estado == true) {
@@ -83,7 +79,6 @@ public class Pedido {
 				}
 			}
 		}
-
 		return noEntregados;
 	}
 	//--------------------------------Metodos de verificacion------------------------------------
@@ -102,19 +97,6 @@ public class Pedido {
 		}
 		return faltan;
 	}
-	
-	
-	/*boolean mismaClase(int p, int p1) {
-		return ambosOrdinarios(p, p1) || ambosEspeciales(p, p1);
-	}
-	
-	private boolean ambosOrdinarios(int p, int p1) {
-		return ((darPaquete(p) instanceof Ordinario) && (darPaquete(p1) instanceof Ordinario));
-	}
-	
-	private boolean ambosEspeciales(int p, int p1) {
-		return ((darPaquete(p) instanceof Especial) && (darPaquete(p1) instanceof Especial));
-	}*/
 	
 	
 	

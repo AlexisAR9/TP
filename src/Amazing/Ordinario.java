@@ -2,13 +2,12 @@ package Amazing;
 
 public class Ordinario extends Paquete {
 	private int costoEnvio;
+	
 	Ordinario(int codPedido, int volumen, int precio, int costoEnvio) {
 		super(codPedido, volumen, precio);
 		this.costoEnvio = costoEnvio;
 	}
-	int mostrarCostoEnvio() {
-		return this.costoEnvio;
-	}
+	
 	@Override
 	public double sumarCosto() {
 		//double precio = super.mostrarPrecio();

@@ -12,13 +12,13 @@ public class Cliente {
 		this.dni = dni;
 	}
 	
-	String mostrarDireccion() {
+	public String mostrarDireccion() {
 		return this.direccion;
 	}
-	String mostrarNombre() {
+	public String mostrarNombre() {
 		return this.nombre;
 	}
-	int mostrarDni() {
+	public int mostrarDni() {
 		return this.dni;
 	}
 	

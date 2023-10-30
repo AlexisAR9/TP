@@ -1,6 +1,6 @@
 package Amazing;
 
-public abstract class Paquete /*implements Comparable<Paquete> */{
+public abstract class Paquete{
 	private int codPaquete;
 	private int precio;
 	private int volumen;
@@ -15,21 +15,22 @@ public abstract class Paquete /*implements Comparable<Paquete> */{
 	}
 	
 	
-	int mostrarVolumen(){
+	public int mostrarVolumen(){
 		return this.volumen;
 	}
 	
-	int mostrarCodigo() {
+	public int mostrarCodigo() {
 		return this.codPaquete;
 	}
 	
-	int mostrarPrecio(){
+	public int mostrarPrecio(){
 		return this.precio;
 	}
-	boolean mostrarEstado() {
+	public boolean mostrarEstado() {
 		return this.estado;
 	}
-	void darPorEntregado(){
+	public void darPorEntregado(){
+		// se considera entregado una vez fue carga en el transporte
 		this.estado = true;
 		return ;
 	}

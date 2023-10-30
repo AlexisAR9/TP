@@ -54,11 +54,7 @@ public abstract class Transporte {
 		}
 		return volumen;
 	}
-	/*public boolean equals(Transporte a) {
-		if(this.getClass() == a.getClass()) {
-			
-		}
-	}*/
+	
 	public abstract String cargarPaquete(int codPedido, LinkedList<Paquete> noEntregados, String direccion);
 	public abstract double sumarCostoEntrega();
 	

@@ -13,7 +13,7 @@ public class Automovil extends Transporte {
 	}
 	@Override
 	public double sumarCostoEntrega() {
-		if(super.cantPaquetesEnCarga() > 0) {
+		if(this.limiteDPaquetes >= super.cantPaquetesEnCarga() && super.cantPaquetesEnCarga() > 0) {
 			return super.mostrarValorViaje() ;
 		}
 		throw new RuntimeException ("Transporte sin cargar")	;
