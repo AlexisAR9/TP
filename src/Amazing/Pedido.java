@@ -34,11 +34,9 @@ public class Pedido {
 	}
 	
 	public boolean eliminarPaquete(int codPaquete) {
-		if(verificarCodPaquete(codPaquete)) {
-			return carrito.remove(codPaquete, darPaquete(codPaquete));
-		}
-		throw new RuntimeException("Paquete no registrado");
+		return carrito.remove(codPaquete, darPaquete(codPaquete));
 	}
+	
 	public int mostrarCodigo() {
 		return this.codPedido;
 	}
@@ -84,7 +82,7 @@ public class Pedido {
 	}
 	//--------------------------------Metodos de verificacion------------------------------------
 
-	private boolean verificarCodPaquete(int codPaquete) {
+	boolean verificarCodPaquete(int codPaquete) {
 		return carrito.containsKey(codPaquete);
 	}
 	private Paquete darPaquete(int codPaquete) {

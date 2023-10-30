@@ -72,13 +72,13 @@ public  class EmpresaAmazing implements IEmpresa  {
 		throw new RuntimeException ("Pedido no registrado");
 	}
 	public boolean quitarPaquete(int codPaquete) { 
+
 		for(Pedido p: pedidos.values()) {
-			if(!p.mostrarEstado()){
-				return p.eliminarPaquete(codPaquete);
+			if(!p.mostrarEstado() && p.verificarCodPaquete(codPaquete)){
+				return  p.eliminarPaquete(codPaquete);
 			}
-			throw new RuntimeException ("Pedido cerrado / no puede ser modificado");
 		}
-		return false;
+		throw new RuntimeException ("Posibles errores =  Pedido cerrado / Paquete no registrado");
 	}	
 		
 	public double cerrarPedido(int codPedido) {
