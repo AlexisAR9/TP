@@ -67,7 +67,17 @@ public abstract class Transporte {
 		return paquetesEnCarga.get(codPaquete);
 	}
 	
-	
+	@Override
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		cadena.append("Patente = "); cadena.append(this.patente);
+		cadena.append('\n');
+		cadena.append("Volumen = "); cadena.append(this.volumen);
+		cadena.append('\n');
+		cadena.append("Valor del viaje = "); cadena.append(this.valorViaje);
+		return cadena.toString();
+	}
 	
 	
 	

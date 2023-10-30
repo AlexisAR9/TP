@@ -21,6 +21,17 @@ public class Cliente {
 	public int mostrarDni() {
 		return this.dni;
 	}
-	
-	
+	@Override
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		cadena.append("Datos del cliente: ");
+		cadena.append('\n');
+		cadena.append("Nombre = "); cadena.append(this.nombre);
+		cadena.append('\n');
+		cadena.append("Direccion = "); cadena.append( this.mostrarDireccion());
+		cadena.append('\n');
+		cadena.append("DNI = "); cadena.append( this.dni);
+		return cadena.toString();
+	}
 }

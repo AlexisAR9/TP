@@ -19,14 +19,14 @@ public class Pedido {
 		
 	}
 	
-	public int agregarPaqueteOrdinario(int numPaquete, int volumen, int precio, int costoEnvio) {
+	public int agregarPaquete(int numPaquete, int volumen, int precio, int costoEnvio) { //ordinario //sobrecarga
 		if(this.estado == false) {
 			carrito.put(numPaquete,new Ordinario(numPaquete, volumen, precio, costoEnvio));
 			return numPaquete;
 		}	
 		throw new RuntimeException ("Pedido cerrado");
 	}
-	public int agregarPaqueteEspecial(int numPaquete, int volumen, int precio, int porcentaje, int adicional) {
+	public int agregarPaquete(int numPaquete, int volumen, int precio, int porcentaje, int adicional) { //especial //sobrecarga
 		if(this.estado == false) {
 			carrito.put(numPaquete, new Especial(numPaquete, volumen, precio, porcentaje, adicional));
 			return numPaquete;
@@ -58,7 +58,7 @@ public class Pedido {
 		double valor = 0;
 		if(this.estado) {
 			for(Paquete paq: carrito.values()) {
-				valor += paq.sumarCosto();
+				valor += paq.sumarCosto(); //Polimorfismo en paq.sumarCosto()
 			}
 		}
 		return valor;
@@ -100,7 +100,21 @@ public class Pedido {
 		return faltan;
 	}
 	
-	
+	@Override
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		cadena.append("Codigo del pedido = "); cadena.append(this.codPedido);
+		cadena.append('\n');
+		cadena.append(cliente.toString());
+		if(this.estado) {
+			cadena.append('\n');
+			cadena.append("El pedido cerrado");
+		}
+		cadena.append('\n');
+		cadena.append("El pedido abierto");
+		return cadena.toString();
+	}
 	
 	
 	

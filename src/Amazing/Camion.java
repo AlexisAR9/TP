@@ -39,7 +39,16 @@ public class Camion extends Transporte{
 		}
 		return string.toString();
 	}
-	
+	@Override
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		cadena.append("Valor adicional = "); cadena.append(this.valorAdicional);
+		cadena.append('\n');
+		cadena.append("Precio de entrega = "); cadena.append(sumarCostoEntrega());
+		
+		return cadena.toString();
+	}
 	
 	
 	

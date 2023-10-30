@@ -27,21 +27,21 @@ public  class EmpresaAmazing implements IEmpresa  {
 		throw new RuntimeException ("Cuit invalido");
 	}
 	
-	public void registrarAutomovil(String patente, int volMax, int valorViaje, int maxPaq) { //bien
+	public void registrarAutomovil(String patente, int volMax, int valorViaje, int maxPaq) { 
 		if(!verificarPatente(patente)) {
 			transportes.put(patente, new Automovil(patente, volMax, valorViaje, maxPaq));
 			return ; 
 		}
 		throw new RuntimeException ("Patente ya registrada");
 	}
-	public void registrarUtilitario(String patente, int volMax, int valorViaje, int valorExtra) { //bien
+	public void registrarUtilitario(String patente, int volMax, int valorViaje, int valorExtra) { 
 		if(!verificarPatente(patente)) {
 			transportes.put(patente, new Utilitario(patente, volMax, valorViaje, valorExtra));
 			return ; 
 		}
 		throw new RuntimeException ("Patente ya registrada");
 	}
-	public void registrarCamion(String patente, int volMax, int valorViaje, int adicXPaq) { //bien
+	public void registrarCamion(String patente, int volMax, int valorViaje, int adicXPaq) { 
 		if(!verificarPatente(patente)) {
 			transportes.put(patente, new Camion(patente, volMax, valorViaje, adicXPaq));
 			return ; 
@@ -50,25 +50,25 @@ public  class EmpresaAmazing implements IEmpresa  {
 	}
 	
 	public int registrarPedido(String cliente, String direccion, int dni) {
-		pedidos.put(numPedidos, new Pedido(numPedidos, cliente, direccion, dni));  //(new Pedido(numPedidos, cliente, direccion, dni));
+		pedidos.put(numPedidos, new Pedido(numPedidos, cliente, direccion, dni));  
 		int aux = numPedidos;
 		numPedidos++;
 		return aux;
 	}
 	
-	public int agregarPaquete(int codPedido, int volumen, int precio, int costoEnvio) { //Ordinario bien
+	public int agregarPaquete(int codPedido, int volumen, int precio, int costoEnvio) { //Ordinario 
 		Pedido pedido = darPedido(codPedido);
 		if(verificarPedido(codPedido)){
-			return pedido.agregarPaqueteOrdinario(numPaquete++, volumen, precio, costoEnvio);
+			return pedido.agregarPaquete(numPaquete++, volumen, precio, costoEnvio);
 		}
 		throw new RuntimeException ("Pedido no registrado");
 		
 	}
 	
-	public int agregarPaquete(int codPedido, int volumen, int precio, int porcentaje, int adicional) {//Especial bien
+	public int agregarPaquete(int codPedido, int volumen, int precio, int porcentaje, int adicional) {//Especial
 		Pedido pedido = darPedido(codPedido);
 		if(verificarPedido(codPedido) ){
-			return pedido.agregarPaqueteEspecial(numPaquete++, volumen, precio, porcentaje, adicional);
+			return pedido.agregarPaquete(numPaquete++, volumen, precio, porcentaje, adicional);
 		}
 		throw new RuntimeException ("Pedido no registrado");
 	}
@@ -96,7 +96,7 @@ public  class EmpresaAmazing implements IEmpresa  {
 			for(Pedido p: pedidos.values()) {
 				if(p.mostrarEstado()) { //verifica que se carga con pedidods cerrados
 					LinkedList <Paquete> noEntregados = p.darPaquetesNoEntregados();
-					string.append(transpo.cargarPaquete(p.mostrarCodigo(), noEntregados, p.mostrarDireccionClient()));
+					string.append(transpo.cargarPaquete(p.mostrarCodigo(), noEntregados, p.mostrarDireccionClient())); //Polimorfismo en transpo.cargarPaquete(p.mostrarCodigo(), noEntregados, p.mostrarDireccionClient())
 					}
 				}
 			return string.toString();
@@ -105,7 +105,7 @@ public  class EmpresaAmazing implements IEmpresa  {
 	}
 	
 	public double costoEntrega(String patente) {
-		return darTransporte(patente).sumarCostoEntrega();
+		return darTransporte(patente).sumarCostoEntrega(); //Polimorfismo en darTransporte(patente).sumarCostoEntrega()
 	}
 	public Map<Integer,String> pedidosNoEntregados(){
 		HashMap<Integer, String> faltantes = new HashMap<>(); 
@@ -170,7 +170,7 @@ public  class EmpresaAmazing implements IEmpresa  {
 	private boolean perteneceAambos(Paquete p, LinkedList<Paquete> paq1) {
 		boolean pertenece = false;
 		for(int i = 0; i < paq1.size(); i++) {
-			pertenece |= (p.equals(paq1.get(i)) && p.mismosAtributos(paq1.get(i)) );
+			pertenece |= (p.equals(paq1.get(i)) && p.mismosAtributos(paq1.get(i)) ); //Polimorfismo en p.mismosAtributos(paq1.get(i)
 		}
 		return pertenece;
 	}
@@ -196,9 +196,7 @@ public  class EmpresaAmazing implements IEmpresa  {
 	private double sumarPedidosCerrados() {
 		double suma = 0.0;
 		for(Pedido p: pedidos.values()) {
-			
 				suma += p.darValorTotal(); // .darValorTotal() verifica que si el pedido cerrado y, en caso de ser true, suma todos sus paquetes
-			
 		}
 			return suma;
 	}
@@ -214,7 +212,8 @@ public  class EmpresaAmazing implements IEmpresa  {
 	@Override
 	public String toString() {
 		StringBuilder cadena = new StringBuilder();
-		cadena.append(this.cuit);
+		
+		cadena.append("Empresa = "); cadena.append(this.cuit);
 		return cadena.toString();
 	}
 	

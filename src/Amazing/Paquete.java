@@ -45,7 +45,22 @@ public abstract class Paquete{
 	public abstract double sumarCosto();
 	
 	
-	
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		cadena.append("Codigo del paquete = "); cadena.append(this.codPaquete);
+		cadena.append('\n');
+		cadena.append("Precio = "); cadena.append(this.precio);
+		cadena.append('\n');
+		cadena.append("Tamaño = "); cadena.append( this.volumen);
+		if(this.estado) {
+			cadena.append('\n');
+			cadena.append("Paquete enviado");
+		}
+		cadena.append('\n');
+		cadena.append("Paquete sin enviar");
+		return cadena.toString();
+	}
 	
 	
 	

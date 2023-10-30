@@ -60,6 +60,16 @@ public class Utilitario extends Transporte {
 
 		}
 		return string.toString();
+	}	
+	@Override
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		cadena.append("Valor extra = "); cadena.append(this.valorExtra);
+		cadena.append('\n');
+		cadena.append("Precio de entrega = "); cadena.append(sumarCostoEntrega());
+		
+		return cadena.toString();
 	}
 	
 }

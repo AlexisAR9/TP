@@ -38,6 +38,15 @@ public class Automovil extends Transporte {
 		}
 		return string.toString();
 	}
+	@Override
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		cadena.append("Limite de paquetes = "); cadena.append(this.limiteDPaquetes);
+		cadena.append('\n');
+		cadena.append("Precio de entrega = "); cadena.append(sumarCostoEntrega());
+		return cadena.toString();
+	}
 	
 	
 }

@@ -27,6 +27,15 @@ public class Ordinario extends Paquete {
 		return false;
 	}
 
-	
+	@Override
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		
+		cadena.append("Costo del envio = "); cadena.append(this.costoEnvio);
+		cadena.append('\n');
+		cadena.append("Precio final = "); cadena.append(sumarCosto());
+		return cadena.toString();
+	}
 
 }

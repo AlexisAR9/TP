@@ -37,7 +37,21 @@ public class Especial extends Paquete {
 		return false;
 		
 	}
-	
+	@Override
+	public String toString() {
+		StringBuilder cadena = new StringBuilder();
+		
+		cadena.append("Pocentaje sumado = "); cadena.append(this.porcentaje);
+		cadena.append('\n');
+		if(super.mostrarVolumen() >= 3000) {
+			cadena.append("Costo adicional = "); cadena.append(this.costoAdicional);
+		}
+		if(super.mostrarVolumen() > 5000) {
+			cadena.append("Costo adicional = "); cadena.append(this.costoAdicional*2);
+		}
+		cadena.append("Precio final = "); cadena.append(sumarCosto());
+		return cadena.toString();
+	}
 	
 	
 	
