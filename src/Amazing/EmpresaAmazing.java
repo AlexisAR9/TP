@@ -122,10 +122,10 @@ public  class EmpresaAmazing implements IEmpresa  {
 		LinkedList <Transporte> transpoLis = lisValores();
 		for(int i=0; i < transpoLis.size() - 1; i++) {
 			Transporte t = transpoLis.get(i);
-			if(t != null) {
+			if(t != null && t.cantPaquetesEnCarga() > 0) {
 				for(int j=1; j < transpoLis.size(); j++) {
 					Transporte t1 =	transpoLis.get(j);
-					if(t1 != null)
+					if(t1 != null && t1.cantPaquetesEnCarga() > 0)
 					hayAlgunTransporteIgualAOtro |= sonIguales(t,t1);
 				}
 			}
