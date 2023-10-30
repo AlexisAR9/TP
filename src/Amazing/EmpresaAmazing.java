@@ -1,8 +1,7 @@
 package Amazing;
 
-import java.util.Collection;
+
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -77,8 +76,9 @@ public  class EmpresaAmazing implements IEmpresa  {
 			if(!p.mostrarEstado()){
 				return p.eliminarPaquete(codPaquete);
 			}
+			throw new RuntimeException ("Pedido cerrado / no puede ser modificado");
 		}
-		throw new RuntimeException ("Pedido cerrado / no puede ser modificado");
+		return false;
 	}	
 		
 	public double cerrarPedido(int codPedido) {
